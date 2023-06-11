@@ -1,0 +1,8 @@
+{
+  "goerli": {
+    "Escrow": {
+      "address": "0xf2cd07ED9A6d04cB81f87Cf72012Dfdd8a0CAC6e",
+      "startBlock": 8919518
+    }
+  }
+}

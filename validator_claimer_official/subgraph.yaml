@@ -1,0 +1,126 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Validator
+    network: zksync-era
+    source:
+      address: "0xbC27A252E879939B56aAeec8430B44b6721FC06E"
+      abi: Validator
+      startBlock: 2825065
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AdminChanged
+        - Approval
+        - ApprovalForAll
+        - AuthorizedCallerSet
+        - BeaconUpgraded
+        - Initialized
+        - NewBatchCreated
+        - OwnershipTransferred
+        - PriceChanged
+        - ReferralSet
+        - StageChanged
+        - Transfer
+        - Upgraded
+        - ValidatorMinted
+        - WhitelistMerkleRootUpdated
+      abis:
+        - name: Validator
+          file: ./abis/Validator.json
+      eventHandlers:
+        - event: AdminChanged(address,address)
+          handler: handleAdminChanged
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: AuthorizedCallerSet(indexed address,bool)
+          handler: handleAuthorizedCallerSet
+        - event: BeaconUpgraded(indexed address)
+          handler: handleBeaconUpgraded
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: NewBatchCreated(uint256,uint256)
+          handler: handleNewBatchCreated
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: PriceChanged(uint256,uint256)
+          handler: handlePriceChanged
+        - event: ReferralSet(indexed uint256,indexed address,indexed address,uint256)
+          handler: handleReferralSet
+        - event: StageChanged(uint8)
+          handler: handleStageChanged
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: Upgraded(indexed address)
+          handler: handleUpgraded
+        - event: ValidatorMinted(indexed address,uint256,uint256)
+          handler: handleValidatorMinted
+        - event: WhitelistMerkleRootUpdated(bytes32)
+          handler: handleWhitelistMerkleRootUpdated
+      file: ./src/validator.ts
+  - kind: ethereum
+    name: Claimer
+    network: zksync-era
+    source:
+      address: "0x112E5059a4742ad8b2baF9C453fDA8695c200454"
+      abi: Claimer
+      startBlock: 2825065
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ClaimerAdminChanged
+        - ClaimerApproval
+        - ClaimerApprovalForAll
+        - ClaimerBeaconUpgraded
+        - ClaimerMinted
+        - ClaimerInitialized
+        - Paused
+        - RoleAdminChanged
+        - RoleGranted
+        - RoleRevoked
+        - ClaimerTransfer
+        - Unpaused
+        - UpdateMaxScore
+        - ClaimerUpgraded
+      abis:
+        - name: Claimer
+          file: ./abis/Claimer.json
+      eventHandlers:
+        - event: AdminChanged(address,address)
+          handler: handleAdminChanged
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: BeaconUpgraded(indexed address)
+          handler: handleBeaconUpgraded
+        - event: ClaimerMinted(indexed address,uint256,indexed uint256,uint256,indexed
+            address,uint8)
+          handler: handleClaimerMinted
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: Paused(address)
+          handler: handlePaused
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: Unpaused(address)
+          handler: handleUnpaused
+        - event: UpdateMaxScore(uint256)
+          handler: handleUpdateMaxScore
+        - event: Upgraded(indexed address)
+          handler: handleUpgraded
+      file: ./src/claimer.ts

@@ -1,0 +1,13 @@
+type DepositReceived @entity {
+  id: ID!
+  depositor: Bytes!
+  amount: BigInt!
+  token: Bytes!
+}
+
+type FundsWithdrawn @entity {
+  id: ID!
+  recipient: Bytes!
+  amount: BigInt!
+  token: Bytes!
+}

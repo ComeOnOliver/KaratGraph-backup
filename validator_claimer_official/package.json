@@ -1,0 +1,18 @@
+{
+  "name": "validator_claimer_official",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ validator_claimer_official",
+    "create-local": "graph create --node http://localhost:8020/ validator_claimer_official",
+    "remove-local": "graph remove --node http://localhost:8020/ validator_claimer_official",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 validator_claimer_official",
+    "test": "graph test"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.48.0",
+    "@graphprotocol/graph-ts": "0.29.1"
+  },
+  "devDependencies": { "matchstick-as": "0.5.0" }
+}

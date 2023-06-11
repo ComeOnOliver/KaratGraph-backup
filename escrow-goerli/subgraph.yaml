@@ -1,0 +1,27 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Escrow
+    network: goerli
+    source:
+      address: "0xf2cd07ED9A6d04cB81f87Cf72012Dfdd8a0CAC6e"
+      abi: Escrow
+      startBlock: 8919518
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - DepositReceived
+        - FundsWithdrawn
+      abis:
+        - name: Escrow
+          file: ./abis/Escrow.json
+      eventHandlers:
+        - event: DepositReceived(indexed address,indexed uint256,indexed address)
+          handler: handleDepositReceived
+        - event: FundsWithdrawn(indexed address,indexed uint256,indexed address)
+          handler: handleFundsWithdrawn
+      file: ./src/escrow.ts

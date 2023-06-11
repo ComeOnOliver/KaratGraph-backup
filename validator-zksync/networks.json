@@ -1,0 +1,11 @@
+{
+  "zksync-era": {
+    "Validator": {
+      "address": "0x206fb07F615F70316BfC140b842913692AFDf4b3",
+      "startBlock": 5261564
+    },
+    "Claimer": {
+      "address": "0x26809F51a86062ba629c89C9a7eE0dcC8000c17C"
+    }
+  }
+}
